@@ -19,7 +19,7 @@
 // include the library
 #include <RadioLib.h>
 
-int PACKET_SIZE = 2;
+int PACKET_SIZE = 6;
 // SX1276 has the following connections:
 // NSS pin:   10
 // DIO0 pin:  2
@@ -86,8 +86,14 @@ void loop() {
     Serial.println(F("success!"));
 
     // print the data of the packet
-    Serial.print(F("[SX1276] Data:\t\t\t"));
+    Serial.println(F("[SX1276] Data:\t\t\t"));
+
+    Serial.print(F("uAltitude: "));
     Serial.println(decode_short(e, 0));
+    Serial.print(F("uLatitude: "));
+    Serial.println(decode_short(e, 2));
+    Serial.print(F("uLongitude: "));
+    Serial.println(decode_short(e, 4));
 
     // print the RSSI (Received Signal Strength Indicator)
     // of the last received packet

@@ -50,20 +50,24 @@ String str = "";
 int package = 0;
 double temp;
 double pressure;
-double altitude_m;
 double accel_x;
 double accel_y;
 double accel_z;
 double gyro_x;
 double gyro_y;
 double gyro_z;
+byte SIV = 0;
+
+// To transmit to ground
 long latitude = 0;
 long longitude = 0;
-byte SIV = 0;
+double altitude_m;
+
 
 double oldTime = millis();
 
 
+// All encoding works by turning the data into array of bits
 
 int encode(double x, uint8_t* e, int s) {
   uint8_t* d = (uint8_t*) &x;
@@ -72,6 +76,8 @@ int encode(double x, uint8_t* e, int s) {
   }
   return s + 8;
 }
+
+// Encode shorts
 int encode(unsigned short x, uint8_t* e, int s) {
   e[s] = (uint8_t)(x >>  0);
   e[s + 1] = (uint8_t)(x >>  8);
@@ -190,7 +196,7 @@ void setup() {
   Serial.println("card initialized.");
 }
 
-int PACKET_SIZE = 2;
+int PACKET_SIZE = 6;
 
 void loop() {  
   // loop through BMP388
@@ -290,12 +296,27 @@ void loop() {
 //  //       See example SX127x_Transmit_Interrupt for details
 //  //       on non-blocking transmission method.
 //  
-  unsigned short uPressure;
-  uPressure = (unsigned short) pressure;
-  encode(uPressure, e, 0);
-  Serial.print(F(" pressure test: "));
-  Serial.println(uPressure);
-//  encode(temp, e, 8);
+
+// Unsigned shorts for transmission data
+// VERIFY BEFOREHAND THAT UNSIGNED SHORTS CAN BE USED (Signs should not change for latitude and longitude?)
+
+  unsigned short uAltitude;
+  unsigned short uLatitude;
+  unsigned short uLongitude;
+
+  uAltitude = (unsigned short) altitude_m;
+  uLatitude = (unsigned short)latitude;
+  uLongitude = (unsigned short)longitude;
+
+  encode(uAltitude, e, 0);
+  encode(uLatitude, e, 2);
+  encode(uLongitude, e, 4);
+
+  Serial.print(F("altitude_m: "));
+  Serial.println(altitude_m);
+  Serial.print(F("uAltitude: "));
+  Serial.println(uAltitude);
+
   package = radio.transmit(e, PACKET_SIZE);
 //
 //  if (package == RADIOLIB_ERR_NONE) {
