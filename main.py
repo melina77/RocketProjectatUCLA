@@ -10,7 +10,8 @@ BAUDRATE = 115200
 
 # grafana labels
 measurement = 'sensorvals'
-field_keys = ["pt1", "tank", "pneumatics", "fill", "tc1", "tc2", "tc3", "tc4", "lc1", "lc2"]
+
+field_keys = ["pt1", "pt2", "pt3", "pt4","pt5", "tc1", "tc2", "tc3", "lc1", "lc2"]
 
 # not sure if we're getting time sent from arduino but i'll put this here just in case :)
 def getTime():
