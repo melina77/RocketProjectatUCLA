@@ -1,4 +1,5 @@
-# Run this thang when u got the arduino hooked up
+
+## All areas marked <!> are areas that need to be verified to match the data being received
 import serial
 import socket
 import time
@@ -11,7 +12,8 @@ BAUDRATE = 115200
 # grafana labels
 measurement = 'sensorvals'
 
-field_keys = ["pt1", "pt2", "pt3", "pt4","pt5", "tc1", "tc2", "tc3", "lc1", "lc2"]
+# <!> Fields must match and be in order of received data
+field_keys = ["pt1", "pt2", "pt3", "pt4", "tc1", "tc2", "lc1", "lc2"]
 
 # not sure if we're getting time sent from arduino but i'll put this here just in case :)
 def getTime():
@@ -47,14 +49,17 @@ while True:
         # get everything except the newline character (MIGHT not need that .decode part)
         line = ser.readline().decode()
         data = line.strip().split(',')
-        # under the assumption that the data is labeled as:
-        # pt1,pt2,pt3,pt4,tc1,tc2,tc3,tc4,lc1,lc2
+
+        # under the assumption that the data is sent as simply:
+        # pt1,pt2,pt3,pt4,tc1,tc2,tc4,lc1,lc2
+
         # create a string to send over to grafana
         fields = ''
         for key,val in zip(field_keys, data):
             fields += f'{key}={val},'
         # remove that last ,
         fields = fields.strip(',')
+
         # create influx string
         influx_string = measurement + ' ' + fields + ' ' + timestamp
         # print(influx_string)
@@ -69,7 +74,7 @@ while True:
             with open(logfile, 'a') as f:
                 f.write(str(int(timestamp)-int(start_time)) + ','.join(data) + '\n')
         except:
-            print('ayo some weird stuff just happened with the data logging')
+            print('Data logging failure')
             continue
 
     # send smooth lc values over

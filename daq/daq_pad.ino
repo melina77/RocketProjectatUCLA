@@ -95,18 +95,33 @@ void loop() {
     digitalWrite(DE_RE_PIN, HIGH);
     delay(1);
     // Printing PT data
-    rs485Serial.print("P1:");
-    rs485Serial.print(pt1);
-    rs485Serial.print(" P2:");
-    rs485Serial.print(pt2);
-    rs485Serial.print(" P3:");
-    rs485Serial.print(pt3);
-    rs485Serial.print(" P4:");
-    rs485Serial.print(pt4);
-    rs485Serial.print(" LC1:");
-    rs485Serial.print(lc1);
-    rs485Serial.print(" LC2:");
-    rs485Serial.print(lc2); 
+    // rs485Serial.print("P1:");
+    // rs485Serial.print(pt1);
+    // rs485Serial.print(" P2:");
+    // rs485Serial.print(pt2);
+    // rs485Serial.print(" P3:");
+    // rs485Serial.print(pt3);
+    // rs485Serial.print(" P4:");
+    // rs485Serial.print(pt4);
+    // rs485Serial.print(" LC1:");
+    // rs485Serial.print(lc1);
+    // rs485Serial.print(" LC2:");
+    // rs485Serial.print(lc2); 
+
+    // Printing PT data in format needed for GUI script
+    int values[] = {pt1, pt2, pt3, pt4, /*tc1, tc2,*/ lc1, lc2};
+    int numValues = sizeof(values) / sizeof(values[0]);
+
+    // Print out numbers separated by comma to serial
+    for (int i = 0; i < numValues; i++)
+    {
+        Serial.print(values[i]);
+
+        if (i < numValues - 1)
+        {
+            Serial.print(",");
+        }
+    }
     
     // Printing load cell data
     // rs4855Serial.write(" Load Cell 1: ");

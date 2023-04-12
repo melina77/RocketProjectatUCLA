@@ -8,7 +8,7 @@ def getTime():
 
 # Initialize stuff
 measurement = 'sensorvals'
-field_keys = ["pt1", "tank", "pneumatics", "fill", "tc1", "tc2", "tc3", "tc4", "lc1", "lc2"]
+field_keys = ["pt1", "pt2", "pt3", "pt4", "tc1", "tc2", "lc1", "lc2"]
 num_fields = len(field_keys)
 field_values = [100 for i in range(num_fields)]
 
