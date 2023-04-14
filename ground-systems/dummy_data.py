@@ -41,7 +41,7 @@ while True:
 
 
         # to simulate arduino delay
-        time.sleep(0.0001)
+        time.sleep(0.166)
     lc_fields = f'lc={sum(lc_avgs)/N + (int(str(time.time_ns())[-10:-7])+400)}'
     lc_data = measurement + ' ' + lc_fields + ' ' + str(timestamp)
     UDPClientSocket.sendto(lc_data.encode(), ('127.0.0.1', 4001))

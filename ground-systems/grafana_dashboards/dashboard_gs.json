@@ -1,0 +1,400 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 4,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "pressurepsi"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "pt1"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#8383dfb0",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "displayName",
+                "value": "Pneumatics"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "pt2"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#d803f5",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "displayName",
+                "value": "Oxidizer Tank"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "pt3"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "#46f203",
+                  "mode": "fixed"
+                }
+              },
+              {
+                "id": "displayName",
+                "value": "Fill Table"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "pt4"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Injector Manifold"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "id": 2,
+      "maxDataPoints": 1200,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "channel": "stream/prometheus_ground_sys/sensorvals",
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
+          "filter": {
+            "fields": [
+              "time",
+              "pt4",
+              "pt1",
+              "pt2",
+              "pt3",
+              "labels"
+            ]
+          },
+          "queryType": "measurements",
+          "refId": "A"
+        }
+      ],
+      "title": "Pressure Transducers",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "grafana",
+        "uid": "grafana"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      },
+      "id": 12,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.3.6",
+      "targets": [
+        {
+          "channel": "stream/prometheus_ground_sys/sensorvals",
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
+          "queryType": "measurements",
+          "refId": "A"
+        }
+      ],
+      "title": "All Sensors",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "datasource",
+        "uid": "grafana"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 9
+      },
+      "id": 14,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "channel": "stream/prometheus_ground_sys/sensorvals",
+          "datasource": {
+            "type": "datasource",
+            "uid": "grafana"
+          },
+          "filter": {
+            "fields": [
+              "time",
+              "lc1",
+              "lc2"
+            ]
+          },
+          "queryType": "measurements",
+          "refId": "A"
+        }
+      ],
+      "title": "Load Cells",
+      "type": "timeseries"
+    }
+  ],
+  "refresh": "",
+  "schemaVersion": 37,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "-- Grafana --",
+          "value": "-- Grafana --"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": "Pneumatics",
+        "multi": false,
+        "name": "pt1",
+        "options": [],
+        "query": "grafana",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "type": "datasource"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-20s",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Prometheus Ground Systems GUI Coldflow",
+  "uid": "CJh24zPVk",
+  "version": 6,
+  "weekStart": ""
+}
