@@ -21,5 +21,5 @@ The hub encompassing all code for Project Prometheus 2022-23.
 7. Install telegraf by running `brew install telegraf` in terminal
 8. Inside of grafana, go to Dashboards → Import or look for any plus symbol that lets you upload a JSON file. Then copy or import the json labeled `dashboard_gs.json` inside of the `/ground-systems` folder you downloaded
 9. `cd` into the `ground-systems/telegraf_configs` folder
-10. Run `telegraf --config prometheus.conf` and `telegraf --config lc_influx.conf` in separate terminal instances
+10. Run `telegraf --config prometheus.conf` and `telegraf --config lc.conf` in separate terminal instances
 11. Test: Run `ground-systems/dummy_data.py` from VS Code using python3. If that doesn't work, run it from terminal by cding into ground-systems and running `python3 dummy_data.py`. Check Grafana, it should be displaying random data. When you actually need to run stuff, run `main.py` instead
