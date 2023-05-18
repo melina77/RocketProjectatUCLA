@@ -19,7 +19,7 @@ measurement = 'sensorvals'
 
 # <!> Fields must match and be in order of received data
 #field_keys = ["pt1", "pt2", "pt3", "pt4", "lc1", "lc2"]
-field_keys = ["pt1", "pt2", "pt3", "pt4", "pt5", "lc1", "lc2", "con1"]
+field_keys = ["pt1", "pt2", "pt3", "pt4", "pt5","lc1", "ac1", "ac2", "ac3", "ac4", "ac5"]
 
 
 # not sure if we're getting time sent from arduino but i'll put this here just in case :)
