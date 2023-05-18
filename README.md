@@ -15,7 +15,7 @@ The hub encompassing all code for Project Prometheus 2022-23.
 1. Install HomeBrew package manager at https://brew.sh/, this will make the other steps easier
 2. Clone the git repository/download the zip and unzip it
 3. Install grafana https://grafana.com/grafana/download?platform=mac
-4. Login to grafana at localhost:3000 (in browser) using username and password of `admin`, then skip creating a new password (If this doesn't work, run `brew services restart grafana`
+4. Login to grafana at localhost:3000 (in browser) using username and password of `admin`, then skip creating a new password (If this doesn't work, run `brew services restart grafana`. Also if you would like to stop the process run 'brew services stop grafana`.)
 5. Go to Configuration → API Keys → Add API Key and give it admin perms, name it anything, and copy this
 6. Go into the `.conf` files in the files you downloaded from this repository, and replace the bearer key with your API key
 7. Install telegraf by running `brew install telegraf` in terminal
