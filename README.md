@@ -25,7 +25,7 @@ The hub encompassing all code for Project Prometheus 2022-23.
 11. Test: Run `ground-systems/dummy_data.py` from VS Code using python3. If that doesn't work, run it from terminal by cding into ground-systems and running `python3 ground-systems/dummy_data.py`. Check Grafana, it should be displaying data. 
 12. When you actually need to run stuff, run `main.py` instead of dummy data.
 
-###### IF YOU ALREADY DID THIS SETUP BEFORE AND ARE SIMPLY GETTING A NEW MAIN FILE AND DASHBOARD
+##### IF YOU ALREADY DID THIS SETUP BEFORE AND ARE SIMPLY GETTING A NEW MAIN FILE AND DASHBOARD
 Download the new repository, and replace **main.py**, **dummy_data.py**, and the **grafana dashboards** in your old repository with the new versions.
 Follow step 8 to load the new dashboard
 Follow steps 9-10 to run telegraf
