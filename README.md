@@ -26,10 +26,10 @@ The hub encompassing all code for Project Prometheus 2022-23.
 12. When you actually need to run stuff, run `main.py` instead of dummy data.
 
 ##### IF YOU ALREADY DID THIS SETUP BEFORE AND ARE SIMPLY GETTING A NEW MAIN FILE AND DASHBOARD
-Download the new repository, and replace **main.py**, **dummy_data.py**, and the **grafana dashboards** in your old repository with the new versions.
-Follow step 8 to load the new dashboard
-Follow steps 9-10 to run telegraf
-Follow step 11
+1. Download the new repository, and replace **main.py**, **dummy_data.py**, and the **grafana dashboards** in your old repository with the new versions.
+2. Follow step 8 to load the new dashboard
+3. Follow steps 9-10 to run telegraf
+4. Follow step 11
 
 #### Windows Instructions
 1. If you don't have python3, download at https://www.python.org/downloads/ or download the VScode extension
